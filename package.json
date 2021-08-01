@@ -1,0 +1,26 @@
+{
+  "name": "nezvany-post",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^5.13.3",
+    "nodemailer": "^6.6.3"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  },
+  "scripts": {
+    "heroku-prebuild": "cd frontend && npm install --dev",
+    "heroku-postbuild": "cd frontend && npm run build",
+    "start": "node backend/server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
