@@ -1,6 +1,6 @@
 import cron from "node-cron";
 import Email from "../models/emailModel.js";
-import CompletedEmail from "../models/CompletedEmailModel.js";
+import CompletedEmail from "../models/completedEmailModel.js";
 import { sendEmail } from "./sendEmail.js";
 
 export const cronJobs = {};
