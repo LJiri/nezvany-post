@@ -2,6 +2,7 @@ import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import data from "../data.js";
 import Email from "../models/emailModel.js";
+import { sheduleEmailSending } from "../utilities/sheduleEmailSending.js";
 
 const emailRouter = express.Router();
 
@@ -17,7 +18,6 @@ emailRouter.get(
 emailRouter.post(
   "/register",
   expressAsyncHandler(async (req, res) => {
-    console.log("ahoj");
     console.log(req.body);
     const email = new Email({
       email: req.body.email,
@@ -31,6 +31,8 @@ emailRouter.post(
       email: createdEmail.email,
       stage: createdEmail.stage,
     });
+
+    sheduleEmailSending(createdEmail.email, createdEmail._id);
   })
 );
 

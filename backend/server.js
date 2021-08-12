@@ -3,9 +3,8 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import emailRouter from "./routes/emailRouter.js";
-// import { sendEmail } from "./sendEmail.js";
-import cron from "node-cron";
-import axios from "axios";
+import wakeUpHeroku from "./utilities/wakeUpHeroku.js";
+import scheduleEmailsInDatabase from "./utilities/scheduleEmailsInDatabase.js";
 
 // Javascritp Module type does not have environment variables, dotenv creates that
 dotenv.config();
@@ -35,7 +34,6 @@ app.use("/api/emails", emailRouter);
 
 app.get("*", (req, res) => {
   console.log("A new request received at " + new Date().toLocaleTimeString());
-  // sendEmail().catch(console.error);
   res.sendFile(path.join(__dirname, "/frontend/build/index.html"));
 });
 
@@ -45,7 +43,6 @@ app.use((err, req, res, next) => {
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
-  cron.schedule("*/15 * * * *", () => {
-    axios.get("https://nezvany-post.herokuapp.com/");
-  });
+  scheduleEmailsInDatabase();
+  wakeUpHeroku();
 });
