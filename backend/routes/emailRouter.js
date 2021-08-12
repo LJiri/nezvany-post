@@ -14,4 +14,24 @@ emailRouter.get(
   })
 );
 
+emailRouter.post(
+  "/register",
+  expressAsyncHandler(async (req, res) => {
+    console.log("ahoj");
+    console.log(req.body);
+    const email = new Email({
+      email: req.body.email,
+      stage: 1,
+    });
+
+    const createdEmail = await email.save();
+
+    res.send({
+      _id: createdEmail._id,
+      email: createdEmail.email,
+      stage: createdEmail.stage,
+    });
+  })
+);
+
 export default emailRouter;

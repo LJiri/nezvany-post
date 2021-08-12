@@ -5,10 +5,12 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "axios": "^0.21.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "mongoose": "^5.13.3",
+    "node-cron": "^3.0.0",
     "nodemailer": "^6.6.3"
   },
   "devDependencies": {},
@@ -19,6 +21,7 @@
   "scripts": {
     "heroku-prebuild": "cd frontend && npm install --dev",
     "heroku-postbuild": "cd frontend && npm run build",
+    "build": "npm run heroku-postbuild",
     "start": "node backend/server.js"
   },
   "author": "",
