@@ -6,6 +6,7 @@ import validateEmail from '../functions/validateEmail';
 export const Form: FC = () => {
   const [email, setEmail] = useState('');
   const [showValidationMessage, setShowValidationMessage] = useState(false);
+  const [emailIsSubmited, setEmailIsSubmited] = useState(false);
 
   const changeEmail = (e: FormEvent<HTMLInputElement>) => {
     setEmail(e.currentTarget.value);
@@ -25,6 +26,9 @@ export const Form: FC = () => {
         email,
       });
       console.log(data);
+      setEmail('');
+      setShowValidationMessage(false);
+      setEmailIsSubmited(true);
     } catch (error) {
       console.log(error);
     }
@@ -39,6 +43,7 @@ export const Form: FC = () => {
           className="form__input"
           value={email}
           onChange={changeEmail}
+          disabled={emailIsSubmited}
         />
         {showValidationMessage && (
           <p className="form__validation-msg">
@@ -50,6 +55,7 @@ export const Form: FC = () => {
         type="button"
         className="form__button"
         onClick={sendEmailWithValidation}
+        disabled={emailIsSubmited}
       >
         Odeslat
       </button>
