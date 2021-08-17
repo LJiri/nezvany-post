@@ -2,6 +2,7 @@ import cron from "node-cron";
 import Email from "../models/emailModel.js";
 import CompletedEmail from "../models/completedEmailModel.js";
 import { sendEmail } from "./sendEmail.js";
+import messages from "../data/messages.js";
 
 export const cronJobs = {};
 
@@ -13,11 +14,11 @@ export const sheduleEmailSending = (emailName, emailId) => {
       try {
         let email = await Email.findOne({ email: emailName });
 
-        if (email.stage < 10) {
+        if (email.stage < 10 && messages[email.stage - 1]) {
           sendEmail(
             emailName,
-            `Zpráva ${email.stage}`,
-            `Toto je zkušební zpráva ${email.stage}`
+            `${messages[email.stage - 1].subject} (${email.stage})`,
+            `${messages[email.stage - 1].message}`
           );
           await Email.updateOne(
             { email: emailName },
