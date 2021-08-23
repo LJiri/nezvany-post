@@ -1,5 +1,5 @@
 {
-  "name": "lucije-design",
+  "name": "nezvany-post",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,16 +10,8 @@
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LJiri/lucije-desing.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LJiri/lucije-desing/issues"
-  },
-  "homepage": "https://github.com/LJiri/lucije-desing#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "react": "^17.0.2",
