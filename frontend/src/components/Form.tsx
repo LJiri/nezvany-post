@@ -36,7 +36,11 @@ export const Form: FC = () => {
 
   return (
     <div className="form">
-      <h1 className="form__header">Pro více informací zadejte svůj email</h1>
+      <h1 className="form__header">
+        Pro více informací o{' '}
+        <span className="form__highlighted">Nezvaný post</span> zadejte prosím
+        svůj e-mail
+      </h1>
       <div className="form__input-wrapper">
         <input
           type="email"
@@ -59,6 +63,9 @@ export const Form: FC = () => {
       >
         Odeslat
       </button>
+      <div className="form__gdpr">
+        ** Vyplněním svého e-mailu souhlasíte se zpracováním osobních údajů
+      </div>
     </div>
   );
 };

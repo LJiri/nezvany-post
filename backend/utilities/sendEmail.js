@@ -18,7 +18,7 @@ export async function sendEmail(email, subject, message) {
     from: "nezvanypost@email.cz", // sender address
     to: email, // list of receivers
     subject: subject, // Subject line
-    text: message, // plain text body
+    html: message, // html body
   });
 
   console.log("Message sent: %s", info.messageId);

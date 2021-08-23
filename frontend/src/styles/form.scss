@@ -7,6 +7,10 @@
     font-family: Arial, Helvetica, sans-serif;
   }
 
+  &__highlighted {
+    font-style: italic;
+  }
+
   &__input-wrapper {
     margin-bottom: 50px;
     position: relative;
@@ -34,5 +38,12 @@
     color: red;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
+  }
+
+  &__gdpr {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-align: right;
+    padding: 5px;
   }
 }

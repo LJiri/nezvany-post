@@ -9,16 +9,16 @@ export const cronJobs = {};
 export const sheduleEmailSending = (emailName, emailId) => {
   const cronJobName = `cronJob_${emailId}`;
 
-  const cronJob = cron.schedule("*/5 * * * * *", () => {
+  const cronJob = cron.schedule("*/2 * * * * *", () => {
     (async () => {
       try {
         let email = await Email.findOne({ email: emailName });
 
-        if (email.stage < 10 && messages[email.stage - 1]) {
+        if (email.stage < 49 && messages[email.stage]) {
           sendEmail(
             emailName,
-            `${messages[email.stage - 1].subject} (${email.stage})`,
-            `${messages[email.stage - 1].message}`
+            `${messages[email.stage].subject}`,
+            `${messages[email.stage].message}`
           );
           await Email.updateOne(
             { email: emailName },
