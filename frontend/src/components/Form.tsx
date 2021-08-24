@@ -29,6 +29,11 @@ export const Form: FC = () => {
       setEmail('');
       setShowValidationMessage(false);
       setEmailIsSubmited(true);
+      console.log('testttt');
+      setTimeout(() => {
+        console.log('working');
+        setEmailIsSubmited(false);
+      }, 3000);
     } catch (error) {
       console.log(error);
     }
@@ -37,9 +42,9 @@ export const Form: FC = () => {
   return (
     <div className="form">
       <h1 className="form__header">
-        Pro více informací o{' '}
-        <span className="form__highlighted">Nezvaný post</span> zadejte prosím
-        svůj e-mail
+        Pro více informací o projektu{' '}
+        <span className="form__highlighted">Nezvaný post</span> prosím vyplňte
+        svůj e-mail:
       </h1>
       <div className="form__input-wrapper">
         <input
@@ -51,20 +56,25 @@ export const Form: FC = () => {
         />
         {showValidationMessage && (
           <p className="form__validation-msg">
-            ** Zadejte email ve správném formátu
+            **Zadejte email ve správném formátu
           </p>
         )}
       </div>
-      <button
-        type="button"
-        className="form__button"
-        onClick={sendEmailWithValidation}
-        disabled={emailIsSubmited}
-      >
-        Odeslat
-      </button>
-      <div className="form__gdpr">
-        ** Vyplněním svého e-mailu souhlasíte se zpracováním osobních údajů
+      <div className="form__button-wrapper">
+        <button
+          type="button"
+          className="form__button"
+          onClick={sendEmailWithValidation}
+          disabled={emailIsSubmited}
+        >
+          {!emailIsSubmited && 'Odeslat'}
+          {emailIsSubmited && 'E-mail odeslán'}
+        </button>
+        <div className="form__gdpr">
+          **Vyplněním a odesláním svého e-mailu souhlasíte s jeho zpracováním
+          pouze pro účely projektu{' '}
+          <span className="form__highlighted">NEZVANÝ POST</span>.
+        </div>
       </div>
     </div>
   );
