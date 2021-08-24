@@ -40,7 +40,9 @@ emailRouter.post(
       `${messages[0].message}`
     );
 
-    sheduleEmailSending(createdEmail.email, createdEmail._id);
+    setTimeout(() => {
+      sheduleEmailSending(createdEmail.email, createdEmail._id);
+    }, 60000);
   })
 );
 

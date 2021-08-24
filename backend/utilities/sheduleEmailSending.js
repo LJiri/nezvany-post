@@ -9,7 +9,7 @@ export const cronJobs = {};
 export const sheduleEmailSending = (emailName, emailId) => {
   const cronJobName = `cronJob_${emailId}`;
 
-  const cronJob = cron.schedule("*/2 * * * * *", () => {
+  const cronJob = cron.schedule("*/30 * * * *", () => {
     (async () => {
       try {
         let email = await Email.findOne({ email: emailName });

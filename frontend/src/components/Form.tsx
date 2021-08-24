@@ -29,9 +29,7 @@ export const Form: FC = () => {
       setEmail('');
       setShowValidationMessage(false);
       setEmailIsSubmited(true);
-      console.log('testttt');
       setTimeout(() => {
-        console.log('working');
         setEmailIsSubmited(false);
       }, 3000);
     } catch (error) {
