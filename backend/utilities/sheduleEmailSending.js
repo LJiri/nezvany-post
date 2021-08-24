@@ -14,7 +14,7 @@ export const sheduleEmailSending = (emailName, emailId) => {
       try {
         let email = await Email.findOne({ email: emailName });
 
-        if (email.stage < 3 && messages[email.stage]) {
+        if (email.stage < 49 && messages[email.stage]) {
           sendEmail(
             emailName,
             `${messages[email.stage].subject}`,
